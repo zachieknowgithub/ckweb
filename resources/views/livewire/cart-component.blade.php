@@ -1,4 +1,4 @@
-
+<div id=main>
     <!-- breadcrumb-section -->
 	<div class="breadcrumb-section breadcrumb-bg">
 		<div class="container">
@@ -13,7 +13,12 @@
 		</div>
 	</div>
 	<!-- end breadcrumb section -->
-
+	@if(Session::has('success_message'))
+									<div class="alert alert-success">
+										<Strong>Success | {{Session::get('success_message')}}</Strong>
+									</div>
+	@endif
+								
 	<!-- cart -->
 	<div class="cart-section mt-150 mb-150">
 		<div class="container">
@@ -29,37 +34,37 @@
 									<th class="product-price">Price</th>
 									<th class="product-quantity">Quantity</th>
 									<th class="product-total">Total</th>
+									<th>Delete</th>
 								</tr>
 							</thead>
+
 							<tbody>
+							@if(Cart::count() > 0)
+								@foreach(Cart::content() as $item)
 								<tr class="table-body-row">
 									<td class="product-remove"><a href="#"><i class="far fa-window-close"></i></a></td>
-									<td class="product-image"><img src="{{ asset('assets/img/products/product-img-1.jpg')}}" alt=""></td>
-									<td class="product-name">Đồng hồ G-Squad GBD-800-7 - Chính Hãng</td>
-									<td class="product-price">$855</td>
-									<td class="product-quantity"><input type="number" placeholder="0"></td>
-									<td class="product-total">1</td>
+									<td class="product-image"><img src="{{ asset('assets/img/products/product-img-')}}{{$item->model->id}}.jpg" alt=""></td>
+									<td class="product-name">{{$item->model->name}}</td>
+									<td class="product-price">$ {{$item->model->regular_price}}</td>
+									<td class="product-quantity">
+										<span>{{$item->qty}}</span>
+									</td>
+									<td class="product-total">$ {{$item->subtotal}}</td>
+									<td>
+										<div class="cart-buttons">
+											<a class="boxed-btn" href="#" wire:click.prevent="destroy('{{$item->rowId}}')">Delete</a>
+										</div>
+									</td>
 								</tr>
-								<tr class="table-body-row">
-									<td class="product-remove"><a href="#"><i class="far fa-window-close"></i></a></td>
-									<td class="product-image"><img src="{{ asset('assets/img/products/product-img-2.jpg')}}" alt=""></td>
-									<td class="product-name">Đồng hồ Tissot 1853 12BL04472 mặt trắng sang trọng</td>
-									<td class="product-price">$1720</td>
-									<td class="product-quantity"><input type="number" placeholder="0"></td>
-									<td class="product-total">1</td>
-								</tr>
-								<tr class="table-body-row">
-									<td class="product-remove"><a href="#"><i class="far fa-window-close"></i></a></td>
-									<td class="product-image"><img src="{{ asset('assets/img/products/product-img-3.jpg')}}" alt=""></td>
-									<td class="product-name">Đồng Hồ Vàng Thương Hiệu Hàng Đầu </td>
-									<td class="product-price">$6235</td>
-									<td class="product-quantity"><input type="number" placeholder="0"></td>
-									<td class="product-total">1</td>
-								</tr>
+								@endforeach
+
 							</tbody>
 						</table>
 					</div>
 				</div>
+				@else 
+									<p> No item in cart yet </p>
+				@endif
 
 				<div class="col-lg-4">
 					<div class="total-section">
@@ -73,35 +78,31 @@
 							<tbody>
 								<tr class="total-data">
 									<td><strong>Subtotal: </strong></td>
-									<td>$500</td>
+									<td>${{Cart::subtotal()}}</td>
+								</tr>
+								<tr class="total-data">
+									<td><strong>Tax: </strong></td>
+									<td>${{Cart::tax()}}</td>
 								</tr>
 								<tr class="total-data">
 									<td><strong>Shipping: </strong></td>
-									<td>$45</td>
+									<td>Free shipping</td>
 								</tr>
 								<tr class="total-data">
 									<td><strong>Total: </strong></td>
-									<td>$545</td>
+									<td>${{Cart::total()}}</td>
 								</tr>
 							</tbody>
 						</table>
 						<div class="cart-buttons">
-							<a href="cart.html" class="boxed-btn">Update Cart</a>
-							<a href="checkout.html" class="boxed-btn black">Check Out</a>
+							<a href="{{route('shop.cart')}}" class="boxed-btn">Update Cart</a>
+							<a href="#" wire:click.prevent="checkout" class="boxed-btn black">Check Out</a>
 						</div>
 					</div>
 
-					<div class="coupon-section">
-						<h3>Apply Coupon</h3>
-						<div class="coupon-form-wrap">
-							<form action="index.php">
-								<p><input type="text" placeholder="Coupon"></p>
-								<p><input type="submit" value="Apply"></p>
-							</form>
-						</div>
-					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 	<!-- end cart -->
+</div>

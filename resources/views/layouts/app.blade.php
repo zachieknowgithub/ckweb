@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,9 +15,9 @@
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
 	<!-- fontawesome -->
-	<link rel="stylesheet" href="{{ asset(' assets/css/all.min.css') }}">
+	<link rel="stylesheet" href="{{ asset('assets/css/all.min.css') }}">
 	<!-- bootstrap -->
-	<link rel="stylesheet" href="{{ asset(' assets/bootstrap/css/bootstrap.min.css')}}">
+	<link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.min.css')}}">
 	<!-- owl carousel -->
 	<link rel="stylesheet" href="{{ asset('assets/css/owl.carousel.css') }}" >
 	<!-- magnific popup -->
@@ -35,7 +36,7 @@
 
 </head>
 <body>
-	
+
 	<!--PreLoader-->
     <div class="loader">
         <div class="loader-inner">
@@ -72,13 +73,7 @@
 									</ul>
 								</li>
 								<li><a href="contact.php">Contact</a></li>
-								<li><a href="shop.html">Shop</a>
-									<ul class="sub-menu">
-										<li><a href="{{ route('shop')}}">Shop</a></li>
-										<li><a href="{{ route('shop.checkout')}}">Check Out</a></li>
-										<li><a href="single-product.html">Single Product</a></li>
-										<li><a href="{{ route('shop.cart')}}">Cart</a></li>
-									</ul>
+								<li><a href="{{ route('shop')}}">Shop</a>
 								</li>
 								<li><a>Account</a>
 								@auth 
@@ -95,7 +90,7 @@
 								</li>
 								<li>
 									<div class="header-icons">
-										<a class="shopping-cart" href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+										<a class="shopping-cart" href="{{ route('shop.cart')}}"><i class="fas fa-shopping-cart"></i></a>
 										<a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
 									</div>
 								</li>
@@ -126,26 +121,72 @@
 	</div>
 	<!-- end header -->
 	
-	<!-- search area -->
-	<div class="search-area">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<span class="close-btn"><i class="fas fa-window-close"></i></span>
-					<div class="search-bar">
-						<div class="search-bar-tablecell">
-							<h3>Search For:</h3>
-							<input type="text" placeholder="Keywords">
-							<button type="submit">Search <i class="fas fa-search"></i></button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- end search area -->
+	@livewire('header-search-component')
+
+		<!-- home page slider -->
+		<div class="homepage-slider">
+     <!-- single home slider -->
+     <div class="single-homepage-slider homepage-bg-1">
+         <div class="container">
+             <div class="row">
+                 <div class="col-md-12 col-lg-7 offset-lg-1 offset-xl-0">
+                     <div class="hero-text">
+                         <div class="hero-text-tablecell">
+                             <p class="subtitle">Beauty And Luxury</p>
+                             <h1>High Quality</h1>
+                             <div class="hero-btns">
+                                 <a href="shop.html" class="boxed-btn">Watch Collection</a>
+                                 <a href="contact.php" class="bordered-btn">Contact Us</a>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </div>
+     <!-- single home slider -->
+     <div class="single-homepage-slider homepage-bg-2">
+         <div class="container">
+             <div class="row">
+                 <div class="col-lg-10 offset-lg-1 text-center">
+                     <div class="hero-text">
+                         <div class="hero-text-tablecell">
+                             <p class="subtitle">Outstanding Everyday</p>
+                             <h1>High Quality Product</h1>
+                             <div class="hero-btns">
+                                 <a href="shop.html" class="boxed-btn">Visit Shop</a>
+                                 <a href="contact.php" class="bordered-btn">Contact Us</a>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </div>
+     <!-- single home slider -->
+     <div class="single-homepage-slider homepage-bg-3">
+         <div class="container">
+             <div class="row">
+                 <div class="col-lg-10 offset-lg-1 text-right">
+                     <div class="hero-text">
+                         <div class="hero-text-tablecell">
+                             <p class="subtitle">Mega Sale Going On!</p>
+                             <h1>Get December Discount</h1>
+                             <div class="hero-btns">
+                                 <a href="shop.html" class="boxed-btn">Visit Shop</a>
+                                 <a href="contact.php" class="bordered-btn">Contact Us</a>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </div>
+ </div>
+ <!-- end home page slider -->
 
 	 {{$slot}}
+
 
 	 	<!-- logo carousel -->
 	<div class="logo-carousel-section">
@@ -246,8 +287,7 @@
 		</div>
 	</div>
 	<!-- end copyright -->
-</div>
-	
+
 	<!-- jquery -->
 	<script src="{{ asset('assets/js/jquery-1.11.3.min.js')}}" ></script>
 	<!-- bootstrap -->
@@ -273,3 +313,4 @@
 
 </body>
 </html>
+

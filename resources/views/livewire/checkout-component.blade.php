@@ -1,4 +1,4 @@
-
+<div id="main">
    <!-- breadcrumb-section -->
 	<div class="breadcrumb-section breadcrumb-bg">
 		<div class="container">
@@ -95,31 +95,29 @@
 									<td>Product</td>
 									<td>Total</td>
 								</tr>
+								@foreach($Cart::content as $item)
 								<tr>
-									<td>Dây đeo thép</td>
-									<td>$85.00</td>
+									<td>{{$item->model->name}}</td>
+									<td>{{$item->model->regular_price}}</td>
 								</tr>
-								<tr>
-									<td>Kim mạ vàng</td>
-									<td>$70.00</td>
-								</tr>
-								<tr>
-									<td>Ốc Tán Titan</td>
-									<td>$35.00</td>
-								</tr>
+								@endforeach
 							</tbody>
 							<tbody class="checkout-details">
 								<tr>
 									<td>Subtotal</td>
-									<td>$190</td>
+									<td>${{$item->subtotal()}}</td>
+								</tr>
+								<tr>
+									<td>Tax: </td>
+									<td>${{Cart::tax()}}</td>
 								</tr>
 								<tr>
 									<td>Shipping</td>
-									<td>$50</td>
+									<td>Free Shipping</td>
 								</tr>
 								<tr>
 									<td>Total</td>
-									<td>$240</td>
+									<td>${{$item->total()}}</td>
 								</tr>
 							</tbody>
 						</table>
@@ -130,5 +128,5 @@
 		</div>
 	</div>
 	<!-- end check out section -->
-
+</div>
 

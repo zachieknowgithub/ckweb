@@ -4,7 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\Product;
 use Livewire\Component;
-
+use Cart;
 class DetailsComponent extends Component
 {
     public $slug;
@@ -14,9 +14,17 @@ class DetailsComponent extends Component
         $this->slug=$slug;
     }
 
+    public function store($product_id,$product_name,$product_price)
+    {
+        Cart::add($product_id,$product_name,$product_price)->associate('App\Models\Product');
+        session()->flash('success_message','Item added to cart');
+        return redirect()->route('shop.cart');
+    }
+
     public function render()
     {
         $product = Product::where('slug',$this->slug)->first();
-        return view('livewire.details-component',['product'=>$product]);
+        $rproducts = Product::where('category_id',$product->category_id)->inRandomOrder()->limit(4)->get();
+        return view('livewire.details-component',['product'=>$product,'rproducts'=>$rproducts]);
     }
 }
