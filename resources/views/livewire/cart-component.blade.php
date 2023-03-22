@@ -27,8 +27,7 @@
 					<div class="cart-table-wrap">
 						<table class="cart-table">
 							<thead class="cart-table-head">
-								<tr class="table-head-row">
-									<th class="product-remove"></th>
+								<tr class="table-head-row">	
 									<th class="product-image">Product Image</th>
 									<th class="product-name">Name</th>
 									<th class="product-price">Price</th>
@@ -42,12 +41,15 @@
 							@if(Cart::count() > 0)
 								@foreach(Cart::content() as $item)
 								<tr class="table-body-row">
-									<td class="product-remove"><a href="#"><i class="far fa-window-close"></i></a></td>
 									<td class="product-image"><img src="{{ asset('assets/img/products/product-img-')}}{{$item->model->id}}.jpg" alt=""></td>
 									<td class="product-name">{{$item->model->name}}</td>
 									<td class="product-price">$ {{$item->model->regular_price}}</td>
 									<td class="product-quantity">
-										<span>{{$item->qty}}</span>
+										<div id="incdec">
+    										<input type="text" value="{{$item->qty}}" />
+											<button id="up" wire:click.prevent="increaseQuantity(' {{$item->rowId}}')">&uarr;</button> 
+											<button id="down" wire:click.prevent="decreaseQuantity(' {{$item->rowId}}')">&darr;</button>
+										</div>
 									</td>
 									<td class="product-total">$ {{$item->subtotal}}</td>
 									<td>

@@ -26,7 +26,7 @@
 								<a href ="{{route('shop')}}">All</a>
 							</li>
 						@foreach ($categories as $category)
-                            <li class ="active">
+                            <li>
 								<a href =" {{ route('shop.category',['slug'=>$category->slug])}}">{{$category->name}} </a>
 							</li>
 						@endforeach

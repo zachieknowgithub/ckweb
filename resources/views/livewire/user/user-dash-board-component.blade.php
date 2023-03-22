@@ -4,7 +4,7 @@
 			<div class="row">
 				<div class="col-lg-8 offset-lg-2 text-center">
 					<div class="breadcrumb-text">
-						<p>Watch24h</p>
+						<p>Watch24h, hello {{ Auth::user() ->name}}!</p>
 						<h1>User dashboard</h1>
 					</div>
 				</div>

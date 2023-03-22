@@ -51,16 +51,13 @@
 				</div>
 			</div>
 			@endforeach
-
-			<div class="row">
-				<div class="col-lg-12 text-center">
-					<div class="pagination-wrap">
-						{{$products->links()}}
-					</div>
-				</div>
 			</div>
+
+			{{$products->links()}}
+
 		</div>
 	</div>
 	<!-- end products -->
-</div>
+
+
 

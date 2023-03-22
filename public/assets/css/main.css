@@ -1497,7 +1497,6 @@ input[type="submit"] {
   vertical-align: middle;
   display: table-cell;
 }
-
 .homepage-slider div.hero-text-tablecell div {
   height: auto;
 }
@@ -1528,7 +1527,6 @@ div.owl-controls, .owl-controls div {
   color: #F28123;
   font-size: 48px;
 }
-
 .homepage-slider {
   position: relative;
 }
@@ -2756,10 +2754,10 @@ table.order-details tbody td {
   width: 100%;
 }
 
-		.nav svg{
-			height: 20px;
-		}
-		.nav .hidden{
-			display: block;
-		}
+.nav svg{
+		height: 20px;
+}
+.nav .hidden{
+		display: block;
+}
 

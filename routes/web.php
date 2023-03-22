@@ -7,9 +7,13 @@ use App\Http\Livewire\HomeComponent;
 use App\Http\Livewire\ShopComponent;
 use App\Http\Livewire\User\UserDashBoardComponent;
 use App\Http\Controllers\ProfileController;
+use App\Http\Livewire\AboutComponent;
+use App\Http\Livewire\Admin\AdminCategoriesComponent;
 use App\Http\Livewire\CategoryComponent;
 use App\Http\Livewire\DetailsComponent;
+use App\Http\Livewire\NewsComponent;
 use App\Http\Livewire\SearchComponent;
+use Illuminate\Foundation\Console\AboutCommand;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -40,6 +44,11 @@ Route::get('/category/{slug}',CategoryComponent::class)->name('shop.category');
 
 Route::get('/search',SearchComponent::class)->name('product.search');
 
+Route::get('/about',AboutComponent::class)->name('about');
+
+Route::get('/news',NewsComponent::class)->name('news');
+
+
 
 //Route::get('/dashboard', function () {
 //    return view('dashboard');
@@ -58,6 +67,7 @@ Route::middleware(['auth'])->group(function()
 Route::middleware(['auth','authadmin'])->group(function()
 {
     Route::get('/admin/dashboard',AdminDashBoardComponent::class)->name('admin.dashboard');
+    Route::get('/admin/categories',AdminCategoriesComponent::class)->name('admin.categories');
 });
 
 require __DIR__.'/auth.php';

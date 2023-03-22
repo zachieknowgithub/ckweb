@@ -65,14 +65,9 @@
 								<li class="current-list-item">
 									<a href="{{ route('home.index')}}">Home</a>
 								</li>
-								<li><a href="about.html">About</a></li>
-								<li><a href="news.html">News</a>
-									<ul class="sub-menu">
-										<li><a href="news.html">News</a></li>
-										<li><a href="single-news.html">Single News</a></li>
-									</ul>
+								<li><a href="{{ route('about')}}">About</a></li>
+								<li><a href="{{ route('news')}}">News</a>
 								</li>
-								<li><a href="contact.php">Contact</a></li>
 								<li><a href="{{ route('shop')}}">Shop</a>
 								</li>
 								<li><a>Account</a>
@@ -80,6 +75,7 @@
 									@if(Auth::user()-> utype =="ADM")
 									<ul class ="sub-menu">
 										<li> <a href="{{ route('admin.dashboard')}}">Dashboard </a></li>
+										<li> <a href="{{route('admin.categories')}}">Admin Categories</a></li>
 									</ul>
 									@else
 									<ul class ="sub-menu">
@@ -90,20 +86,14 @@
 								</li>
 								<li>
 									<div class="header-icons">
-										<a class="shopping-cart" href="{{ route('shop.cart')}}"><i class="fas fa-shopping-cart"></i></a>
-										<a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
-									</div>
-								</li>
-								<li>
-									<div class="header-icons">
-
 										@auth 
-										{{ Auth::user() ->name}}
 										<form method="post" action="{{ route('logout')}}" >
 											@csrf 
+											<a class="shopping-cart" href="{{ route('shop.cart')}}"><i class="fas fa-shopping-cart"></i></a>
 											<a href="{{ route('logout')}}" onclick="event.preventDefault(); this.closest('form').submit();">Logout</a>
 										</form>
 										@else
+										<a class="shopping-cart" href="{{ route('shop.cart')}}"><i class="fas fa-shopping-cart"></i></a>
 										<a href="{{ route('login')}}">Login</a>
 										<a href="{{ route('register')}}">Register</a>
 										@endif
@@ -111,8 +101,9 @@
 								</li>
 							</ul>
 						</nav>
-						<a class="mobile-show search-bar-icon" href="#"><i class="fas fa-search"></i></a>
-						<div class="mobile-menu"></div>
+						<div class="mobile-menu">
+							
+						</div>
 						<!-- menu end -->
 					</div>
 				</div>
@@ -123,8 +114,8 @@
 	
 	@livewire('header-search-component')
 
-		<!-- home page slider -->
-		<div class="homepage-slider">
+	   <!-- home page slider -->
+	   <div class="homepage-slider">
      <!-- single home slider -->
      <div class="single-homepage-slider homepage-bg-1">
          <div class="container">
@@ -155,7 +146,6 @@
                              <h1>High Quality Product</h1>
                              <div class="hero-btns">
                                  <a href="shop.html" class="boxed-btn">Visit Shop</a>
-                                 <a href="contact.php" class="bordered-btn">Contact Us</a>
                              </div>
                          </div>
                      </div>

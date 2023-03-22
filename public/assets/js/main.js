@@ -156,6 +156,16 @@
         $(".close-btn").on("click", function() {
             $(".search-area").removeClass("search-active");
         });
+
+        $("#up").on('click',function(){
+            $("#incdec input").val(parseInt($("#incdec input").val())+1);
+         });
+        
+        $("#down").on('click',function(){
+            $("#incdec input").val(parseInt($("#incdec input").val())-1);
+         });
+        
+
     
     });
 
