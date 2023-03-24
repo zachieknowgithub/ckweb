@@ -99,6 +99,7 @@
 						<div class="cart-buttons">
 							<a href="{{route('shop.cart')}}" class="boxed-btn">Update Cart</a>
 							<a href="#" wire:click.prevent="checkout" class="boxed-btn black">Check Out</a>
+							<a href="{{route('addmoney.paymentstripe')}}" class="boxed-btn">Payment Methods</a>
 						</div>
 					</div>
 

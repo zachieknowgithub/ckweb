@@ -16,6 +16,8 @@ use App\Http\Livewire\SearchComponent;
 use Illuminate\Foundation\Console\AboutCommand;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\StripePaymentController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -50,6 +52,7 @@ Route::get('/news',NewsComponent::class)->name('news');
 
 
 
+
 //Route::get('/dashboard', function () {
 //    return view('dashboard');
 //})->middleware(['auth', 'verified'])->name('dashboard');
@@ -71,3 +74,7 @@ Route::middleware(['auth','authadmin'])->group(function()
 });
 
 require __DIR__.'/auth.php';
+ 
+//cong thanh toan
+Route::get('stripe',[StripePaymentController::class,'paymentStripe'])->name('addmoney.paymentstripe');
+Route::post('add-money-stripe',[StripePaymentController::class,'postPaymentStripe'])->name('addmoney.stripe');
