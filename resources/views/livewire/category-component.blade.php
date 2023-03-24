@@ -40,7 +40,7 @@
 				<div class="col-lg-4 col-md-6 text-center">
 					<div class="single-product-item">
 						<div class="product-image">
-							<a href="{{route('product.details',[$product->slug])}}"><img src="{{ asset('assets/img/products/product-img-') }}{{$product->id}}.jpg" alt=" {{$product ->name}}"></a>
+							<a href="{{route('product.details',[$product->slug])}}"><img src="{{asset('assets/img/products')}}/{{$product->image}}" alt=" {{$product ->name}}"></a>
 						</div>
 						<h3>{{$product->name}}</h3>
 						<p class="product-price"> {{$product -> regular_price}}</p>
@@ -49,8 +49,9 @@
 							
 					</div>
 				</div>
+				@endforeach
 			</div>
-			@endforeach
+			
 
 			<div class="row">
 				<div class="col-lg-12 text-center">

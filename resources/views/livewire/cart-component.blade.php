@@ -5,7 +5,7 @@
 			<div class="row">
 				<div class="col-lg-8 offset-lg-2 text-center">
 					<div class="breadcrumb-text">
-						<p>Fresh and Organic</p>
+						<p>Watch 24h</p>
 						<h1>Cart</h1>
 					</div>
 				</div>
@@ -20,6 +20,7 @@
 	@endif
 								
 	<!-- cart -->
+	@if(Cart::count() > 0)
 	<div class="cart-section mt-150 mb-150">
 		<div class="container">
 			<div class="row">
@@ -38,17 +39,17 @@
 							</thead>
 
 							<tbody>
-							@if(Cart::count() > 0)
+						
 								@foreach(Cart::content() as $item)
 								<tr class="table-body-row">
-									<td class="product-image"><img src="{{ asset('assets/img/products/product-img-')}}{{$item->model->id}}.jpg" alt=""></td>
+									<td class="product-image"><img src="{{asset('assets/img/products')}}/{{$item->model->image}}" alt=""></td>
 									<td class="product-name">{{$item->model->name}}</td>
 									<td class="product-price">$ {{$item->model->regular_price}}</td>
 									<td class="product-quantity">
-										<div id="incdec">
-    										<input type="text" value="{{$item->qty}}" />
-											<button id="up" wire:click.prevent="increaseQuantity(' {{$item->rowId}}')">&uarr;</button> 
-											<button id="down" wire:click.prevent="decreaseQuantity(' {{$item->rowId}}')">&darr;</button>
+											<div class="single-product-form">
+											<form action="index.php">
+											<input type="number" placeholder="{{$item->qty}}">
+											</form>
 										</div>
 									</td>
 									<td class="product-total">$ {{$item->subtotal}}</td>
@@ -66,7 +67,8 @@
 				</div>
 				@else 
 									<p> No item in cart yet </p>
-				@endif
+								@endif
+			
 
 				<div class="col-lg-4">
 					<div class="total-section">

@@ -49,8 +49,9 @@
 							
 					</div>
 				</div>
-			</div>
 			@endforeach
+			</div>
+			
 
 			<div class="row">
 				<div class="col-lg-12 text-center">

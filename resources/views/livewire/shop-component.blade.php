@@ -1,4 +1,12 @@
 <div id="main">
+<style>
+            nav svg{
+                height: 20px;;
+            }
+            nav .hidden{
+                display: block;
+            }
+        </style>
    <!-- breadcrumb-section -->
 	<div class="breadcrumb-section breadcrumb-bg">
 		<div class="container">
@@ -40,7 +48,7 @@
 				<div class="col-lg-4 col-md-6 text-center">
 					<div class="single-product-item">
 						<div class="product-image">
-							<a href="{{route('product.details',[$product->slug])}}"><img src="{{ asset('assets/img/products/product-img-') }}{{$product->id}}.jpg" alt=" {{$product ->name}}"></a>
+							<a href="{{route('product.details',[$product->slug])}}"><img src="{{asset('assets/img/products')}}/{{$product->image}}" alt=" {{$product ->name}}"></a>
 						</div>
 						<h3>{{$product->name}}</h3>
 						<p class="product-price"> {{$product -> regular_price}}</p>
@@ -49,13 +57,28 @@
 							
 					</div>
 				</div>
+				@endforeach
 			</div>
-			@endforeach
+			
 			</div>
 
-			{{$products->links()}}
+	
 
 		</div>
+		<div class="row">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-12 text-center">
+							<div class="pagination-wrap">
+								<ul>
+									{{$products->links()}}
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		
 	</div>
 	<!-- end products -->
 

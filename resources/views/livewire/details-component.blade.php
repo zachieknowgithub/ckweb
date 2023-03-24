@@ -1,4 +1,4 @@
-
+<div id="main">
 <!-- breadcrumb-section -->
        <div class="breadcrumb-section breadcrumb-bg">
 		<div class="container">
@@ -19,7 +19,7 @@
 			<div class="row">
 				<div class="col-md-5">
 					<div class="single-product-img">
-						<img src="{{ asset('assets/img/products/product-img-')}}{{$product->id}}.jpg" alt="{{$product->name}}">
+						<img src="{{asset('assets/img/products')}}/{{$product->image}}" alt="{{$product->name}}">
 					</div>
 				</div>
 				<div class="col-md-7">
@@ -27,25 +27,14 @@
 						<h3>{{$product->name}}</h3>
 						<p class="single-product-pricing"><span>${{$product->regular_price}}</span> </p>
 						<p>{{$product->short_description}}</p>
-						<div class="single-product-form">
-							<form action="index.php">
-								<input type="number" placeholder="0">
-							</form>
-							<a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+
+							<a href="#" wire:click.prevent="store({{$product->id}},'{{$product->name}}',{{$product->regular_price}})"class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
 							<p><strong>About	: </strong>{{$product->description}}</p>
 						</div>
-						<h4>Share:</h4>
-						<ul class="product-share">
-							<li><a href=""><i class="fab fa-facebook-f"></i></a></li>
-							<li><a href=""><i class="fab fa-twitter"></i></a></li>
-							<li><a href=""><i class="fab fa-google-plus-g"></i></a></li>
-							<li><a href=""><i class="fab fa-linkedin"></i></a></li>
-						</ul>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 	<!-- end single product -->
 
 	<!-- more products -->
@@ -61,19 +50,21 @@
 			</div>
 			<div class="row">
 			
+				
+				@foreach( $rproducts as $rproduct)
 				<div class="col-lg-4 col-md-6 text-center">
 					<div class="single-product-item">
-					@foreach( $rproducts as $rproduct)
 						<div class="product-image">
-							<a href="{{route('product.details',[$product->slug])}}"><img src="{{ asset('assets/img/products/product-img-') }}{{$rproduct->id}}.jpg" alt="{{ $rproduct->name}}"></a>
+							<a href="{{route('product.details',[$product->slug])}}"><img src="{{asset('assets/img/products')}}/{{$rproduct->image}}" alt="{{ $rproduct->name}}"></a>
 						</div>
 						<h3>{{ $rproduct->name}}</h3>
 						<p class="product-price">$ {{$rproduct->regular_price}} </p>
-						<a href="#" wire:click.prevent="store({{$product->id}},'{{$product->name}}',{{$product->regular_price}})" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+						<a href="#" wire:click.prevent="store({{$rproduct->id}},'{{$rproduct->name}}',{{$rproduct->regular_price}})" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
 					</div>
 				</div>
 				@endforeach
 			</div>
 		</div>
 	</div>
+</div>
 	<!-- end more products -->

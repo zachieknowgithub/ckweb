@@ -62,7 +62,7 @@
 						<!-- menu start -->
 						<nav class="main-menu">
 							<ul>
-								<li class="current-list-item">
+								<li>
 									<a href="{{ route('home.index')}}">Home</a>
 								</li>
 								<li><a href="{{ route('about')}}">About</a></li>
@@ -75,7 +75,8 @@
 									@if(Auth::user()-> utype =="ADM")
 									<ul class ="sub-menu">
 										<li> <a href="{{ route('admin.dashboard')}}">Dashboard </a></li>
-										<li> <a href="{{route('admin.categories')}}">Admin Categories</a></li>
+										<li><a href="{{route('admin.categories')}}">Categories</a></li>
+										<li><a href="{{route('admin.products')}}">Products</a></li>
 									</ul>
 									@else
 									<ul class ="sub-menu">
@@ -84,6 +85,9 @@
 									@endif 
 								@endif 
 								</li>
+										<li>
+									<a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
+									</li>
 								<li>
 									<div class="header-icons">
 										@auth 
@@ -114,66 +118,6 @@
 	
 	@livewire('header-search-component')
 
-	   <!-- home page slider -->
-	   <div class="homepage-slider">
-     <!-- single home slider -->
-     <div class="single-homepage-slider homepage-bg-1">
-         <div class="container">
-             <div class="row">
-                 <div class="col-md-12 col-lg-7 offset-lg-1 offset-xl-0">
-                     <div class="hero-text">
-                         <div class="hero-text-tablecell">
-                             <p class="subtitle">Beauty And Luxury</p>
-                             <h1>High Quality</h1>
-                             <div class="hero-btns">
-                                 <a href="shop.html" class="boxed-btn">Watch Collection</a>
-                                 <a href="contact.php" class="bordered-btn">Contact Us</a>
-                             </div>
-                         </div>
-                     </div>
-                 </div>
-             </div>
-         </div>
-     </div>
-     <!-- single home slider -->
-     <div class="single-homepage-slider homepage-bg-2">
-         <div class="container">
-             <div class="row">
-                 <div class="col-lg-10 offset-lg-1 text-center">
-                     <div class="hero-text">
-                         <div class="hero-text-tablecell">
-                             <p class="subtitle">Outstanding Everyday</p>
-                             <h1>High Quality Product</h1>
-                             <div class="hero-btns">
-                                 <a href="shop.html" class="boxed-btn">Visit Shop</a>
-                             </div>
-                         </div>
-                     </div>
-                 </div>
-             </div>
-         </div>
-     </div>
-     <!-- single home slider -->
-     <div class="single-homepage-slider homepage-bg-3">
-         <div class="container">
-             <div class="row">
-                 <div class="col-lg-10 offset-lg-1 text-right">
-                     <div class="hero-text">
-                         <div class="hero-text-tablecell">
-                             <p class="subtitle">Mega Sale Going On!</p>
-                             <h1>Get December Discount</h1>
-                             <div class="hero-btns">
-                                 <a href="shop.html" class="boxed-btn">Visit Shop</a>
-                                 <a href="contact.php" class="bordered-btn">Contact Us</a>
-                             </div>
-                         </div>
-                     </div>
-                 </div>
-             </div>
-         </div>
-     </div>
- </div>
- <!-- end home page slider -->
 
 	 {{$slot}}
 
@@ -230,11 +174,14 @@
 					<div class="footer-box pages">
 						<h2 class="widget-title">Pages</h2>
 						<ul>
-							<li><a href="index.php">Home</a></li>
-							<li><a href="about.html">About</a></li>
-							<li><a href="services.html">Shop</a></li>
-							<li><a href="news.html">News</a></li>
-							<li><a href="contact.php">Contact</a></li>
+								<li>
+									<a href="{{ route('home.index')}}">Home</a>
+								</li>
+								<li><a href="{{ route('about')}}">About</a></li>
+								<li><a href="{{ route('news')}}">News</a>
+								</li>
+								<li><a href="{{ route('shop')}}">Shop</a>
+								</li>
 						</ul>
 					</div>
 				</div>
@@ -261,17 +208,6 @@
 					<p>Copyrights &copy; 2019 - <a href="https://imransdesign.com/">Imran Hossain</a>,  All Rights Reserved.<br>
 						Distributed By - <a href="https://themewagon.com/">Themewagon</a>
 					</p>
-				</div>
-				<div class="col-lg-6 text-right col-md-12">
-					<div class="social-icons">
-						<ul>
-							<li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-							<li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
-							<li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
-							<li><a href="#" target="_blank"><i class="fab fa-linkedin"></i></a></li>
-							<li><a href="#" target="_blank"><i class="fab fa-dribbble"></i></a></li>
-						</ul>
-					</div>
 				</div>
 			</div>
 		</div>

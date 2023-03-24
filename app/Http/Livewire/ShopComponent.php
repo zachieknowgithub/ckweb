@@ -6,7 +6,7 @@ use App\Models\Category;
 use App\Models\Product;
 use Livewire\Component;
 use Livewire\WithPagination;
-use Cart;
+use Gloudemans\Shoppingcart\Cart;
 
 class ShopComponent extends Component
 {
