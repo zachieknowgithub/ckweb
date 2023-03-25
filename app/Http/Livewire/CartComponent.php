@@ -3,7 +3,7 @@
 namespace App\Http\Livewire;
  
 use Livewire\Component;
-use Cart;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Auth;
 
 class CartComponent extends Component
@@ -29,10 +29,6 @@ class CartComponent extends Component
         session()->flash('success_message','item has been removed');
     }
 
-    public function render()
-    {
-        return view('livewire.cart-component');
-    }
 
     public function checkout()
     {
@@ -45,4 +41,11 @@ class CartComponent extends Component
             redirect()->route('login');
         }
     }
+
+
+    public function render()
+    {
+        return view('livewire.cart-component');
+    }
+
 }

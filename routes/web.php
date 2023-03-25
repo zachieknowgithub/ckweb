@@ -18,6 +18,7 @@ use App\Http\Livewire\CategoryComponent;
 use App\Http\Livewire\DetailsComponent;
 use App\Http\Livewire\NewsComponent;
 use App\Http\Livewire\SearchComponent;
+use App\Http\Livewire\ThankyouComponent;
 use Illuminate\Foundation\Console\AboutCommand;
 use Illuminate\Support\Facades\Route;
 
@@ -52,6 +53,8 @@ Route::get('/search',SearchComponent::class)->name('product.search');
 Route::get('/about',AboutComponent::class)->name('about');
 
 Route::get('/news',NewsComponent::class)->name('news');
+
+Route::get('/thank-you',ThankyouComponent::class)->name('thankyou');
 
 
 
